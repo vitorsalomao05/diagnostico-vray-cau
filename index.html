@@ -298,6 +298,101 @@
         }
         .progress-dot.active { background-color: #D4AF37; }
 
+        /* MOBILE RESPONSIVENESS */
+        @media (max-width: 768px) {
+            /* General Layout */
+            .slide-container {
+                padding: 60px 20px;
+                min-height: auto; /* Allow content to dictate height on mobile */
+            }
+            
+            /* Typography */
+            h1 { font-size: 42px; }
+            h2 { font-size: 36px; }
+            h3 { font-size: 24px; }
+            p, li { font-size: 16px; }
+            
+            /* Grids & Flex to Stack */
+            .two-column {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            /* Bleed Layouts */
+            .slide-container.bleed-image-layout {
+                grid-template-columns: 1fr;
+                display: flex;
+                flex-direction: column-reverse; /* Image on top or bottom? Let's put image on top usually, but here content first might be better for reading flow. Let's try column-reverse to put image at bottom or column for top. Actually, standard stacking usually puts image first or second depending on context. Let's stick to column. */
+                flex-direction: column;
+            }
+            .bleed-image-layout .content-container {
+                padding: 60px 20px;
+                min-height: auto;
+            }
+            .bleed-image-layout .image-container {
+                height: 300px; /* Fixed height for mobile image */
+                min-height: auto;
+            }
+            
+            /* Rounded Images */
+            .rounded-image-layout .image-wrapper {
+                width: 280px;
+                height: 280px;
+                border-width: 4px;
+            }
+            
+            /* Tiled Content */
+            .tiled-content {
+                flex-direction: column;
+            }
+            
+            /* Timeline - Convert to vertical stack */
+            .timeline-layout {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 0;
+                margin-top: 20px;
+            }
+            .timeline-line {
+                width: 4px;
+                height: 100%;
+                left: 20px; /* Align with dots */
+                top: 0;
+                transform: none;
+            }
+            .timeline-item {
+                width: 100%;
+                flex-direction: row;
+                text-align: left;
+                margin-bottom: 30px;
+                align-items: flex-start;
+            }
+            .timeline-dot {
+                margin-right: 20px;
+                margin-bottom: 0;
+                flex-shrink: 0;
+                /* Center dot on line */
+                margin-left: 8px; 
+            }
+            /* Adjust line position to go through dots */
+            .timeline-line {
+                left: 20px; 
+            }
+            
+            /* Investment Slide Grid */
+            .slide-container .content-area > div[style*="grid-template-columns"] {
+                grid-template-columns: 1fr !important;
+                gap: 40px !important;
+            }
+            
+            /* Logo Container */
+            .logo-container img {
+                height: 100px !important;
+            }
+            
+            /* Q&A */
+            .qa-layout h2 { font-size: 48px; }
+        }
     </style>
 </head>
 <body>
@@ -516,7 +611,7 @@
                 </div>
 
                 <!-- Right: Price Card -->
-                <div style="background-color: #FFFFFF; padding: 30px; border-radius: 12px; box-shadow: 0 20px 40px rgba(62, 39, 35, 0.15); text-align: center; border: 1px solid #EFEBE9; position: relative; overflow: hidden; max-width: 400px; margin: 0 auto;">
+                <div style="background-color: #FFFFFF; padding: 30px; border-radius: 12px; box-shadow: 0 20px 40px rgba(62, 39, 35, 0.15); text-align: center; border: 1px solid #EFEBE9; position: relative; overflow: hidden; max-width: 500px; margin: 0 auto;">
                     <div style="position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: #D4AF37;"></div>
                     
                     <h3 style="font-size: 20px; color: #5D4037; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; font-weight: 600;">Diagnóstico Completo</h3>
