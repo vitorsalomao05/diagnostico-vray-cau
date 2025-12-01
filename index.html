@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V-Ray & Cau Chocolates - Proposta de Diagnóstico</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* CORE SETUP */
+        * { box-sizing: border-box; }
+        body {
+            background-color: #FFF8E1; /* Cream background for seamless flow */
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* SLIDE CONTAINER & ANIMATION */
+        .presentation-wrapper {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .slide-container {
+            width: 100%;
+            min-height: 100vh;
+            padding: 80px max(20px, calc(50% - 640px)); /* Center content max 1280px */
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: #3E2723;
+            
+            /* Scroll Animation Init State */
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .slide-container.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Alternating backgrounds for integrated sections */
+        .slide-container:nth-child(odd) {
+            background-color: #FFF8E1;
+        }
+        .slide-container:nth-child(even) {
+            background-color: #FFFFFF;
+        }
+
+        /* TYPOGRAPHY */
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: #3E2723;
+            margin: 0;
+        }
+
+        h1 { font-size: 72px; font-weight: 700; letter-spacing: -1px; }
+        h2 { font-size: 56px; font-weight: 700; margin-bottom: 30px; }
+        h3 { font-size: 28px; font-weight: 700; margin-bottom: 15px; color: #5D4037; }
+        
+        p, li {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px;
+            line-height: 1.6;
+            color: #4E342E;
+        }
+
+        .slide-title {
+            width: 100%;
+            text-align: left;
+            border-bottom: 2px solid #D4AF37; /* Gold Accent */
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        /* LAYOUT UTILS */
+        .content-area {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            height: 100%;
+        }
+
+        /* IMAGES */
+        .image-wrapper {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            height: 400px;
+            width: 100%;
+        }
+        .image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ROUNDED IMAGE LAYOUT */
+        .rounded-image-layout .image-wrapper {
+            border-radius: 50%;
+            width: 450px;
+            height: 450px;
+            margin: 0 auto;
+            border: 8px solid #D4AF37;
+        }
+
+        /* BLEED IMAGE LAYOUT */
+        .slide-container.bleed-image-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            padding: 0 !important; /* Override standard padding for full bleed */
+            align-items: stretch;
+            max-width: 100%;
+        }
+        .bleed-image-layout .content-container {
+            padding: 80px max(20px, calc(100% - 640px)); /* Keep content centered relative to half screen? No, just padding */
+            padding: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: auto;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #FFF8E1 0%, #FFECB3 100%);
+        }
+        .bleed-image-layout .image-container {
+            height: auto;
+            min-height: 100vh;
+            width: 100%;
+            position: relative;
+        }
+        .bleed-image-layout img.bleed-image-side {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        /* TILED CONTENT */
+        .tiled-content {
+            display: flex;
+            gap: 30px;
+            width: 100%;
+        }
+        .tile {
+            background-color: #FFFFFF;
+            border: 1px solid #EFEBE9;
+            border-radius: 8px;
+            padding: 40px 30px;
+            flex: 1;
+            text-align: center;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .tile .icon {
+            font-size: 48px;
+            color: #D4AF37;
+            margin-bottom: 20px;
+        }
+
+        /* TIMELINE LAYOUT */
+        .timeline-layout {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            width: 100%;
+            margin-top: 40px;
+            padding: 0 40px;
+        }
+        .timeline-line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: #D7CCC8;
+            z-index: 0;
+            transform: translateY(-50%);
+        }
+        .timeline-item {
+            position: relative;
+            z-index: 1;
+            width: 22%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .timeline-dot {
+            width: 24px;
+            height: 24px;
+            background-color: #FFF8E1;
+            border: 4px solid #3E2723;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        .timeline-item:hover .timeline-dot {
+            background-color: #D4AF37;
+            border-color: #D4AF37;
+            transform: scale(1.2);
+        }
+        .timeline-content {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            width: 100%;
+        }
+        .timeline-content h3 {
+            font-size: 20px;
+            color: #D4AF37;
+            margin-bottom: 10px;
+        }
+        .timeline-content p {
+            font-size: 14px;
+            margin: 0;
+        }
+
+        /* TITLE SLIDE LOGOS */
+        .logo-container {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 30px;
+            align-items: center;
+        }
+        .logo-placeholder {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            color: #3E2723;
+            border: 2px solid #3E2723;
+            padding: 10px 30px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Q&A */
+        .qa-layout { text-align: center; }
+        .qa-layout h2 { font-size: 80px; color: #D4AF37; margin-bottom: 20px; border: none; }
+
+        /* NAVIGATION CONTROLS */
+        .nav-button {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            transition: background 0.3s;
+            z-index: 100;
+        }
+        .nav-button:hover { background-color: rgba(212, 175, 55, 0.8); }
+        .prev-btn { left: 20px; }
+        .next-btn { right: 20px; }
+        
+        .progress-bar {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 100;
+        }
+        .progress-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.3);
+            cursor: pointer;
+        }
+        .progress-dot.active { background-color: #D4AF37; }
+
+    </style>
+</head>
+<body>
+
+<div class="presentation-wrapper">
+    <!-- Slide 1: Title Slide -->
+    <div class="slide-container">
+        <div class="two-column">
+            <div class="content-area" style="align-items: flex-start; text-align: left; justify-content: center;">
+                <h1 style="font-size: 64px; margin-bottom: 20px;">Diagnóstico<br>Estratégico de IA</h1>
+                <p style="font-size: 24px; color: #5D4037; max-width: 600px;">Uma jornada de inovação para potencializar a tradição da Cau Chocolates.</p>
+                <div style="margin-top: 60px; width: 100px; height: 5px; background-color: #D4AF37;"></div>
+            </div>
+            
+            <div style="display: flex; align-items: center; justify-content: center;">
+                <div style="background-color: #FFFFFF; padding: 60px; border-radius: 12px; box-shadow: 0 20px 40px rgba(62, 39, 35, 0.15); text-align: center; border: 1px solid #EFEBE9; position: relative; overflow: hidden; width: 100%; max-width: 500px;">
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: #D4AF37;"></div>
+                    <div class="logo-container" style="flex-direction: column; gap: 15px; margin-bottom: 0;">
+                        <img src="imgs/logo_vray_transp.png" alt="V-Ray Logo" style="height: 150px; width: auto;">
+                        <div style="font-size: 24px; color: #D4AF37;">&times;</div>
+                        <img src="imgs/logo_cau_transp.png" alt="Cau Chocolates Logo" style="height: 150px; width: auto;">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="position: absolute; right: 0; top: 0; bottom: 0; width: 40%; background-image: url('http://googleusercontent.com/image_collection/image_retrieval/14943345333808093097'); background-size: cover; opacity: 0.05; mask-image: linear-gradient(to right, transparent, black); pointer-events: none;"></div>
+    </div>
+
+    <!-- Slide 2: Context (Rounded Image) -->
+    <div class="slide-container">
+        <h2 class="slide-title">O Desafio da Inovação</h2>
+        <div class="content-area">
+            <div class="two-column rounded-image-layout">
+                <div>
+                    <div class="image-wrapper">
+                        <img src="imgs/mao_chocolate.png" alt="Close up de mãos trabalhando com chocolate artesanal">
+                    </div>
+                </div>
+                <div>
+                    <h3>Tradição encontra Tecnologia</h3>
+                    <p>A Cau Chocolates já é referência em qualidade e experiência artesanal. O próximo passo é integrar inteligência de dados sem perder a essência humana.</p>
+                    <p><strong>Nosso objetivo:</strong> Identificar gargalos operacionais e oportunidades de personalização que apenas a Inteligência Artificial pode revelar.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: Potential of AI (Bleed Image Right) -->
+    <div class="slide-container bleed-image-layout">
+        <div class="content-container">
+            <h2>O Potencial da IA</h2>
+            <p>Imagine prever a demanda de Páscoa com 95% de precisão ou personalizar ofertas para cada cliente que entra na loja.</p>
+            <p>A IA não substitui o artesão; ela empodera o negócio para crescer de forma sustentável e inteligente.</p>
+            <div style="margin-top: 30px;">
+                <i class="fa-solid fa-chart-line" style="color: #D4AF37; font-size: 32px; margin-right: 20px;"></i>
+                <i class="fa-solid fa-brain" style="color: #D4AF37; font-size: 32px;"></i>
+            </div>
+        </div>
+        <div class="image-container">
+            <img class="bleed-image-side" src="imgs/rede_neural.png" alt="Rede neural abstrata em tons de dourado e marrom">
+        </div>
+    </div>
+
+    <!-- Slide 4: Timeline -->
+    <div class="slide-container">
+        <h2 class="slide-title">Cronograma: 4 Semanas de Imersão</h2>
+        <div class="content-area">
+            <div style="display: flex; justify-content: space-between; position: relative; padding-top: 30px;">
+                <!-- Connecting Line -->
+                <div style="position: absolute; top: 55px; left: 10%; right: 10%; height: 2px; background: #D7CCC8; z-index: 0;"></div>
+                
+                <!-- Card 1 -->
+                <div style="position: relative; z-index: 1; width: 22%; background: #FFF; padding: 50px 20px 30px; border-radius: 12px; box-shadow: 0 10px 30px rgba(62, 39, 35, 0.1); text-align: center; border: 1px solid #EFEBE9;">
+                    <div style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); width: 50px; height: 50px; background: #D4AF37; color: #FFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 700; border: 4px solid #FFF8E1;">1</div>
+                    <h3 style="font-size: 14px; color: #8D6E63; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; margin-top: 5px;">Semana 1</h3>
+                    <p style="font-size: 20px; color: #3E2723; font-weight: 700; margin: 0; line-height: 1.3;">Imersão &<br>Cultura</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div style="position: relative; z-index: 1; width: 22%; background: #FFF; padding: 50px 20px 30px; border-radius: 12px; box-shadow: 0 10px 30px rgba(62, 39, 35, 0.1); text-align: center; border: 1px solid #EFEBE9;">
+                    <div style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); width: 50px; height: 50px; background: #D4AF37; color: #FFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 700; border: 4px solid #FFF8E1;">2</div>
+                    <h3 style="font-size: 14px; color: #8D6E63; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; margin-top: 5px;">Semana 2</h3>
+                    <p style="font-size: 20px; color: #3E2723; font-weight: 700; margin: 0; line-height: 1.3;">Mapeamento<br>de Processos</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div style="position: relative; z-index: 1; width: 22%; background: #FFF; padding: 50px 20px 30px; border-radius: 12px; box-shadow: 0 10px 30px rgba(62, 39, 35, 0.1); text-align: center; border: 1px solid #EFEBE9;">
+                    <div style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); width: 50px; height: 50px; background: #D4AF37; color: #FFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 700; border: 4px solid #FFF8E1;">3</div>
+                    <h3 style="font-size: 14px; color: #8D6E63; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; margin-top: 5px;">Semana 3</h3>
+                    <p style="font-size: 20px; color: #3E2723; font-weight: 700; margin: 0; line-height: 1.3;">Análise<br>de Dados</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div style="position: relative; z-index: 1; width: 22%; background: #FFF; padding: 50px 20px 30px; border-radius: 12px; box-shadow: 0 10px 30px rgba(62, 39, 35, 0.1); text-align: center; border: 1px solid #EFEBE9;">
+                    <div style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); width: 50px; height: 50px; background: #D4AF37; color: #FFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 700; border: 4px solid #FFF8E1;">4</div>
+                    <h3 style="font-size: 14px; color: #8D6E63; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; margin-top: 5px;">Semana 4</h3>
+                    <p style="font-size: 20px; color: #3E2723; font-weight: 700; margin: 0; line-height: 1.3;">Entrega do<br>Diagnóstico</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: Immersion (Bleed Image Right) -->
+    <div class="slide-container bleed-image-layout">
+        <div class="content-container">
+            <h2>Diagnóstico Humano</h2>
+            <p>Antes dos algoritmos, entendemos as pessoas. Nossa equipe mergulha na rotina da loja, observando o fluxo e ouvindo quem faz a magia acontecer.</p>
+            <ul style="list-style: none; padding: 0; margin-top: 20px;">
+                <li style="margin-bottom: 10px;"><i class="fa-solid fa-check" style="color: #D4AF37; margin-right: 10px;"></i> Conversas estruturadas com a equipe</li>
+                <li style="margin-bottom: 10px;"><i class="fa-solid fa-check" style="color: #D4AF37; margin-right: 10px;"></i> Mapeamento de processos internos</li>
+                <li><i class="fa-solid fa-check" style="color: #D4AF37; margin-right: 10px;"></i> Levantamento de indicadores de operação</li>
+            </ul>
+        </div>
+        <div class="image-container">
+            <img class="bleed-image-side" src="imgs/interior_loja.png" alt="Interior luxuoso de loja de chocolates artesanais" style="object-position: 14% center;">
+        </div>
+    </div>
+
+    <!-- Slide 6: Tech Viability (Tiled Text) -->
+    <div class="slide-container">
+        <h2 class="slide-title">Análise de Viabilidade Técnica</h2>
+        <div class="content-area">
+            <div class="tiled-content">
+                <div class="tile">
+                    <div class="icon"><i class="fa-solid fa-database"></i></div>
+                    <h3>Dados</h3>
+                    <p>Avaliação da qualidade e volume dos dados históricos de vendas e estoque existentes.</p>
+                </div>
+                <div class="tile">
+                    <div class="icon"><i class="fa-solid fa-server"></i></div>
+                    <h3>Infraestrutura</h3>
+                    <p>Análise dos sistemas de PDV e ERP atuais para checar compatibilidade com APIs de IA.</p>
+                </div>
+                <div class="tile">
+                    <div class="icon"><i class="fa-solid fa-users-gear"></i></div>
+                    <h3>Capacitação</h3>
+                    <p>Diagnóstico da maturidade digital da equipe para receber novas ferramentas.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7: Deliverables (Rounded Image) -->
+    <div class="slide-container">
+        <h2 class="slide-title">Mapa de Oportunidades</h2>
+        <div class="content-area">
+            <div class="two-column rounded-image-layout">
+                <div>
+                    <h3>Visão Clara do Futuro</h3>
+                    <p>Ao final de 30 dias, entregaremos um documento estratégico contendo:</p>
+                    <ul style="margin-top: 20px; padding-left: 20px;">
+                        <li>Mapa de oportunidades por área do negócio</li>
+                        <li>Roadmap de implantação em ondas</li>
+                        <li>Plano de capacitação para uso das novas ferramentas</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="image-wrapper">
+                        <img src="imgs/roadmap.png" alt="Consultor mostrando roadmap digital em tablet">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 8: Why V-Ray (Bleed Image Right) -->
+    <div class="slide-container bleed-image-layout">
+        <div class="content-container">
+            <h2>Por que a VRay?</h2>
+            <p>Não somos apenas técnicos; somos parceiros de negócio. Unimos a precisão da engenharia de dados com a sensibilidade do varejo de luxo.</p>
+            <p>Colocamos nossa experiência em engenharia de dados a serviço de um objetivo claro: transformar a Cau Chocolates em um case de inovação em IA no varejo de alto padrão.</p>
+        </div>
+        <div class="image-container">
+            <img class="bleed-image-side" src="imgs/reuniao.png" alt="Equipe de consultoria em reunião criativa">
+        </div>
+    </div>
+
+    <!-- Slide 9: Investment -->
+    <div class="slide-container">
+        <h2 class="slide-title">Investimento</h2>
+        <div class="content-area">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; height: 100%;">
+                
+                <!-- Left: Value Proposition -->
+                <div>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 30px; display: flex; align-items: flex-start;">
+                            <div style="background: #D4AF37; color: #FFF; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 20px; flex-shrink: 0;">
+                                <i class="fa-solid fa-check" style="font-size: 16px;"></i>
+                            </div>
+                            <div>
+                                <strong style="display: block; font-size: 20px; color: #3E2723; margin-bottom: 5px;">Imersão Presencial</strong>
+                                <span style="font-size: 16px; color: #5D4037;">Análise cultural, entrevistas e cliente oculto na loja física.</span>
+                            </div>
+                        </li>
+                        <li style="margin-bottom: 30px; display: flex; align-items: flex-start;">
+                            <div style="background: #D4AF37; color: #FFF; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 20px; flex-shrink: 0;">
+                                <i class="fa-solid fa-check" style="font-size: 16px;"></i>
+                            </div>
+                            <div>
+                                <strong style="display: block; font-size: 20px; color: #3E2723; margin-bottom: 5px;">Análise Técnica</strong>
+                                <span style="font-size: 16px; color: #5D4037;">Avaliação de infraestrutura, dados e sistemas (PDV/ERP).</span>
+                            </div>
+                        </li>
+                        <li style="margin-bottom: 30px; display: flex; align-items: flex-start;">
+                            <div style="background: #D4AF37; color: #FFF; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 20px; flex-shrink: 0;">
+                                <i class="fa-solid fa-check" style="font-size: 16px;"></i>
+                            </div>
+                            <div>
+                                <strong style="display: block; font-size: 20px; color: #3E2723; margin-bottom: 5px;">Mapa de Oportunidades</strong>
+                                <span style="font-size: 16px; color: #5D4037;">Relatório estratégico com sugestões de IA e cálculo de ROI.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Right: Price Card -->
+                <div style="background-color: #FFFFFF; padding: 30px; border-radius: 12px; box-shadow: 0 20px 40px rgba(62, 39, 35, 0.15); text-align: center; border: 1px solid #EFEBE9; position: relative; overflow: hidden; max-width: 400px; margin: 0 auto;">
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: #D4AF37;"></div>
+                    
+                    <h3 style="font-size: 20px; color: #5D4037; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; font-weight: 600;">Diagnóstico Completo</h3>
+                    <p style="font-size: 14px; color: #8D6E63; margin-bottom: 20px;">Ciclo de 4 semanas</p>
+                    
+                    <div style="font-family: 'Playfair Display', serif; font-size: 60px; color: #3E2723; margin: 0; font-weight: 700; line-height: 1;">
+                        <span style="font-size: 24px; vertical-align: super; margin-right: 5px;">R$</span>8.000
+                    </div>
+                    
+                    <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #EFEBE9;">
+                        <p style="font-size: 14px; color: #5D4037; margin: 0;">
+                            <i class="fa-solid fa-shield-halved" style="color: #D4AF37; margin-right: 8px;"></i>
+                            Pagamento único
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 10: Q&A -->
+    <div class="slide-container">
+        <div class="qa-layout" style="display: flex; flex-direction: column; height: 100%; justify-content: center;">
+            <i class="fa-regular fa-comments" style="font-size: 60px; color: #3E2723; margin-bottom: 30px;"></i>
+            <h2>Dúvidas?</h2>
+            <p style="font-size: 24px; color: #5D4037;">Estamos prontos para iniciar essa transformação.</p>
+            <div style="margin-top: 40px; font-weight: 700; color: #3E2723; font-size: 20px;">
+                rafa@rayes.com.br <br>
+                vitorassissalomao05@gmail.com 
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Scroll Animation Observer
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                // Optional: Stop observing once visible if you don't want it to fade out again
+                // observer.unobserve(entry.target); 
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.slide-container').forEach((slide, index) => {
+        observer.observe(slide);
+        // Make first slide visible immediately
+        if (index === 0) slide.classList.add('visible');
+    });
+</script>
+
+</body>
+</html>
+```
