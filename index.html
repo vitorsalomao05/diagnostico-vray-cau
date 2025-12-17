@@ -272,21 +272,197 @@
         .qa-layout { text-align: center; }
         .qa-layout h2 { font-size: 80px; color: #D4AF37; margin-bottom: 20px; border: none; }
 
+        /* TABLET RESPONSIVENESS */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .slide-container { padding: 60px 40px; }
+            h1 { font-size: 48px; }
+            h2 { font-size: 44px; }
+            h3 { font-size: 24px; }
+            .slide-title { font-size: 44px; }
+        }
+
         /* MOBILE RESPONSIVENESS */
         @media (max-width: 768px) {
-            .slide-container { padding: 60px 20px; min-height: auto; }
-            h1 { font-size: 42px; }
-            h2 { font-size: 36px; }
-            .two-column { grid-template-columns: 1fr; gap: 40px; }
-            .slide-container.bleed-image-layout { grid-template-columns: 1fr; display: flex; flex-direction: column; }
-            .bleed-image-layout .content-container { padding: 60px 20px; min-height: auto; }
-            .bleed-image-layout .image-container { height: 300px; min-height: auto; }
-            .rounded-image-layout .image-wrapper { width: 280px; height: 280px; border-width: 4px; }
-            .tiled-content { flex-direction: column; }
-            .custom-timeline-wrapper { flex-direction: column; align-items: center; gap: 60px; padding-top: 20px; }
-            .custom-timeline-line { width: 2px; height: 100%; left: 50%; top: 0; right: auto; transform: translateX(-50%); }
-            .custom-timeline-card { width: 100%; max-width: 320px; }
-            .logo-container img { height: 100px !important; }
+            /* Base Layout */
+            .slide-container {
+                padding: 40px 20px;
+                min-height: auto;
+            }
+
+            /* Typography */
+            h1 {
+                font-size: 36px !important;
+                line-height: 1.2;
+            }
+            h2 {
+                font-size: 32px;
+                margin-bottom: 20px;
+            }
+            h3 {
+                font-size: 20px;
+                margin-bottom: 12px;
+            }
+            .slide-title {
+                font-size: 32px;
+                padding-bottom: 15px;
+                margin-bottom: 30px;
+            }
+            p, li {
+                font-size: 16px;
+                line-height: 1.5;
+            }
+
+            /* Two Column Layouts */
+            .two-column {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            /* Bleed Image Layout */
+            .slide-container.bleed-image-layout {
+                grid-template-columns: 1fr;
+                display: flex;
+                flex-direction: column;
+            }
+            .bleed-image-layout .content-container {
+                padding: 40px 20px;
+                min-height: auto;
+            }
+            .bleed-image-layout .image-container {
+                height: 250px;
+                min-height: auto;
+                order: -1; /* Image first on mobile */
+            }
+
+            /* Rounded Image Layout */
+            .rounded-image-layout .image-wrapper {
+                width: 220px;
+                height: 220px;
+                border-width: 4px;
+            }
+
+            /* Tiled Content (3 cards features) */
+            .tiled-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .tile {
+                padding: 30px 20px;
+            }
+            .tile .icon {
+                font-size: 36px;
+            }
+
+            /* Timeline */
+            .custom-timeline-wrapper {
+                flex-direction: column;
+                align-items: center;
+                gap: 50px;
+                padding-top: 20px;
+            }
+            .custom-timeline-line {
+                width: 2px;
+                height: 100%;
+                left: 50%;
+                top: 0;
+                right: auto;
+                transform: translateX(-50%);
+            }
+            .custom-timeline-card {
+                width: 100%;
+                max-width: 300px;
+                padding: 40px 15px 25px;
+            }
+            .custom-timeline-badge {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+
+            /* Logos */
+            .logo-container img {
+                height: 80px !important;
+            }
+
+            /* Download Button */
+            .download-btn {
+                padding: 15px 35px;
+                font-size: 16px;
+                margin-top: 30px;
+            }
+            .download-btn i {
+                font-size: 20px;
+            }
+
+            /* Investment Section - New Slide with 3 possibilities cards */
+            .slide-container .content-area > div[style*="grid-template-columns: repeat(3, 1fr)"] {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+            }
+
+            /* Investment Section - 2 column layout */
+            .slide-container .content-area > div[style*="grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+                gap: 30px !important;
+            }
+
+            /* Image Wrapper */
+            .image-wrapper {
+                height: 250px;
+            }
+
+            /* QA Layout */
+            .qa-layout h2 {
+                font-size: 48px !important;
+            }
+        }
+
+        /* SMALL MOBILE (< 480px) */
+        @media (max-width: 480px) {
+            .slide-container {
+                padding: 30px 15px;
+            }
+
+            h1 {
+                font-size: 28px !important;
+            }
+            h2 {
+                font-size: 26px;
+            }
+            h3 {
+                font-size: 18px;
+            }
+
+            .slide-title {
+                font-size: 26px;
+            }
+
+            p, li {
+                font-size: 15px;
+            }
+
+            .logo-container img {
+                height: 60px !important;
+            }
+
+            .rounded-image-layout .image-wrapper {
+                width: 180px;
+                height: 180px;
+            }
+
+            .download-btn {
+                padding: 12px 25px;
+                font-size: 14px;
+            }
+
+            .custom-timeline-card {
+                max-width: 260px;
+                padding: 35px 12px 20px;
+            }
+
+            .qa-layout h2 {
+                font-size: 36px !important;
+            }
         }
     </style>
 </head>
@@ -296,8 +472,8 @@
     <div class="slide-container">
         <div class="two-column">
             <div class="content-area" style="align-items: flex-start; text-align: left; justify-content: center;">
-                <h1 style="font-size: 54px; margin-bottom: 20px;">Automação &<br>Inteligência de Atendimento</h1>
-                <p style="font-size: 24px; color: #5D4037; max-width: 600px;">Projeto Páscoa 2026<br>Eficiência operacional e atendimento otimizado.</p>
+                <h1 style="font-size: 54px; margin-bottom: 20px;">Plataforma de<br>Inteligência Artificial</h1>
+                <p style="font-size: 24px; color: #5D4037; max-width: 600px;">Projeto Páscoa 2026<br>Transformando dados em inteligência de atendimento.</p>
                 <div style="margin-top: 40px; width: 100px; height: 5px; background-color: #D4AF37;"></div>
             </div>
             
@@ -326,9 +502,9 @@
                     </div>
                 </div>
                 <div>
-                    <h3>Demanda vs. Atendimento Manual</h3>
-                    <p>A Páscoa representa o pico máximo de vendas e, consequentemente, de contatos. O modelo atual de atendimento manual no WhatsApp se tornou um gargalo que limita a conversão.</p>
-                    <p><strong>A Prioridade:</strong> Garantir que nenhum cliente fique sem resposta. Precisamos de um atendimento inteligente e escalável para absorver altos fluxos de venda.</p>
+                    <h3>Dados Sem Inteligência</h3>
+                    <p>A Cau acumulou anos de dados valiosos sobre clientes e vendas, mas esses dados não são trabalhados de forma inteligente. Falta visibilidade sobre relacionamento, preferências e oportunidades.</p>
+                    <p><strong>A Prioridade:</strong> Aplicar IA para transformar dados históricos em insights acionáveis, otimizando atendimento, identificando oportunidades, padrões e perfis de clientes, e maximizando resultados. Tudo antes da Páscoa.</p>
                 </div>
             </div>
         </div>
@@ -336,12 +512,12 @@
 
     <div class="slide-container bleed-image-layout">
         <div class="content-container">
-            <h2>A Solução:<br> Integração de Chatbot</h2>
-            <p>Implementação de uma ferramenta de atendimento automatizado via WhatsApp, treinada com inteligência artificial para entender a linguagem e as necessidades dos clientes da Cau.</p>
-            <p>O objetivo não é apenas responder, mas <strong>otimizar tarefas</strong>: tirar dúvidas de catálogo, consultar disponibilidade e direcionar para fechamento, liberando a equipe humana para casos complexos.</p>
+            <h2>A Solução:<br> Plataforma de Inteligência</h2>
+            <p>Desenvolvimento de uma plataforma completa de IA sob medida para a Cau, reunindo modelos preditivos, segmentação comportamental e análise de padrões históricos.</p>
+            <p>O objetivo é <strong>transformar dados em inteligência acionável</strong>: identificar oportunidades, priorizar atendimentos, personalizar relacionamento e otimizar toda a operação comercial.</p>
             <div style="margin-top: 30px;">
-                <i class="fa-brands fa-whatsapp" style="color: #D4AF37; font-size: 32px; margin-right: 20px;"></i>
-                <i class="fa-solid fa-robot" style="color: #D4AF37; font-size: 32px;"></i>
+                <i class="fa-solid fa-brain" style="color: #D4AF37; font-size: 32px; margin-right: 20px;"></i>
+                <i class="fa-solid fa-chart-line" style="color: #D4AF37; font-size: 32px;"></i>
             </div>
         </div>
         <div class="image-container">
@@ -352,7 +528,7 @@
     <div class="slide-container">
         <h2 class="slide-title">Cronograma: Corrida até a Páscoa</h2>
         <div class="content-area">
-            <p style="text-align: center; margin-bottom: 40px; font-weight: 500; color: #5D4037;">Projeto Fast-Track: 05/01/26 a 23/03/26</p>
+            <p style="text-align: center; margin-bottom: 40px; font-weight: 500; color: #5D4037;">Projeto Fast-Track: 05/01/26 a 05/04/26</p>
             <div class="custom-timeline-wrapper">
                 <div class="custom-timeline-line"></div>
                 
@@ -365,23 +541,23 @@
 
                 <div class="custom-timeline-card">
                     <div class="custom-timeline-badge">2</div>
-                    <span class="date-label">Até 15/03/2026</span>
-                    <h3 style="font-size: 18px; color: #3E2723; margin-bottom: 10px; font-weight: 700;">Implementação<br>Técnica</h3>
-                    <p style="font-size: 14px; margin: 0;">Desenvolvimento do bot, integração e automação.</p>
+                    <span class="date-label">Até 15/02/2026</span>
+                    <h3 style="font-size: 18px; color: #3E2723; margin-bottom: 10px; font-weight: 700;">Arquitetura &<br>Modelagem</h3>
+                    <p style="font-size: 14px; margin: 0;">Engenharia de dados e modelos de IA.</p>
                 </div>
 
                 <div class="custom-timeline-card">
                     <div class="custom-timeline-badge">3</div>
-                    <span class="date-label">Até 22/03/2026</span>
-                    <h3 style="font-size: 18px; color: #3E2723; margin-bottom: 10px; font-weight: 700;">Testes &<br>Capacitação</h3>
-                    <p style="font-size: 14px; margin: 0;">Validação e treino da equipe para uso da ferramenta.</p>
+                    <span class="date-label">Até 20/03/2026</span>
+                    <h3 style="font-size: 18px; color: #3E2723; margin-bottom: 10px; font-weight: 700;">Plataforma &<br>Testes</h3>
+                    <p style="font-size: 14px; margin: 0;">Desenvolvimento e validação completa.</p>
                 </div>
 
                 <div class="custom-timeline-card" style="background-color: #3E2723; border-color: #3E2723;">
                     <div class="custom-timeline-badge" style="background-color: #FFF; color: #3E2723; border-color: #D4AF37;">4</div>
-                    <span class="date-label" style="color: #D4AF37;">23/03/2026</span>
+                    <span class="date-label" style="color: #D4AF37;">Até 05/04/2026</span>
                     <h3 style="font-size: 18px; color: #FFF; margin-bottom: 10px; font-weight: 700;">Go-Live<br>Páscoa</h3>
-                    <p style="font-size: 14px; margin: 0; color: #D7CCC8;">Início das vendas com operação assistida.</p>
+                    <p style="font-size: 14px; margin: 0; color: #D7CCC8;">Plataforma em produção antes da Páscoa.</p>
                 </div>
             </div>
         </div>
@@ -390,11 +566,11 @@
     <div class="slide-container bleed-image-layout">
         <div class="content-container">
             <h2>Fase 1: Diagnóstico/Estudo</h2>
-            <p>Para criar um atendimento eficiente, precisamos entender os padrões. Focaremos na análise de dados e conversas antigas para estruturar a "mente" do Chatbot.</p>
+            <p>Analisaremos em profundidade os dados históricos da Cau para definir exatamente as soluções de IA que trarão maior impacto ao negócio.</p>
             <ul style="list-style: none; padding: 0; margin-top: 20px;">
-                <li style="margin-bottom: 10px;"><i class="fa-solid fa-check" style="color: #D4AF37; margin-right: 10px;"></i> Análise de FAQs e scripts de venda</li>
-                <li style="margin-bottom: 10px;"><i class="fa-solid fa-check" style="color: #D4AF37; margin-right: 10px;"></i> Mapeamento da jornada do cliente no WhatsApp</li>
-                <li><i class="fa-solid fa-check" style="color: #D4AF37; margin-right: 10px;"></i> Definição de regras de transbordo (Bot → Humano)</li>
+                <li style="margin-bottom: 10px;"><i class="fa-solid fa-check" style="color: #D4AF37; margin-right: 10px;"></i> Análise completa dos dados de clientes e vendas</li>
+                <li style="margin-bottom: 10px;"><i class="fa-solid fa-check" style="color: #D4AF37; margin-right: 10px;"></i> Mapeamento de processos e integrações necessárias</li>
+                <li><i class="fa-solid fa-check" style="color: #D4AF37; margin-right: 10px;"></i> Definição detalhada da plataforma e funcionalidades</li>
             </ul>
         </div>
         <div class="image-container">
@@ -403,23 +579,23 @@
     </div>
 
     <div class="slide-container">
-        <h2 class="slide-title">Fase 2: Implementação e Ferramentas</h2>
+        <h2 class="slide-title">Fase 2: Implementação da Plataforma</h2>
         <div class="content-area">
             <div class="tiled-content">
                 <div class="tile">
-                    <div class="icon"><i class="fa-brands fa-whatsapp"></i></div>
-                    <h3>API WhatsApp</h3>
-                    <p>Configuração de conta oficial e segura para alto volume de mensagens.</p>
+                    <div class="icon"><i class="fa-solid fa-database"></i></div>
+                    <h3>Engenharia de Dados</h3>
+                    <p>Pipelines de dados e modelos de Machine Learning treinados.</p>
                 </div>
                 <div class="tile">
-                    <div class="icon"><i class="fa-solid fa-sitemap"></i></div>
-                    <h3>Fluxos de Conversa</h3>
-                    <p>Criação de árvores de decisão inteligentes para triagem rápida.</p>
+                    <div class="icon"><i class="fa-solid fa-chart-pie"></i></div>
+                    <h3>Dashboards e IA</h3>
+                    <p>Plataforma web com visualizações e insights inteligentes.</p>
                 </div>
                 <div class="tile">
                     <div class="icon"><i class="fa-solid fa-users-gear"></i></div>
-                    <h3>Painel de Gestão</h3>
-                    <p>Treinamento da equipe para usar o painel multi-atendente.</p>
+                    <h3>Capacitação</h3>
+                    <p>Treinamento da equipe para uso efetivo da plataforma.</p>
                 </div>
             </div>
         </div>
@@ -430,13 +606,13 @@
         <div class="content-area">
             <div class="two-column rounded-image-layout">
                 <div>
-                    <h3>Prontos para Vender</h3>
-                    <p>Ao final do dia 22/03, a Cau Chocolates terá:</p>
+                    <h3>Prontos para a Páscoa</h3>
+                    <p>Até 05/04/2026, a Cau Chocolates terá:</p>
                     <ul style="margin-top: 20px; padding-left: 20px;">
-                        <li>Diagnóstico do fluxo atual de atendimento.</li>
-                        <li>Ferramenta de Chatbot implementada e testada.</li>
-                        <li>Equipe de vendas capacitada no novo sistema.</li>
-                        <li>Automação rodando para o pico da Páscoa.</li>
+                        <li>Plataforma de inteligência completa e operacional.</li>
+                        <li>Modelos de Machine Learning integrados.</li>
+                        <li>Dashboards e ferramentas de IA prontas para uso.</li>
+                        <li>Equipe capacitada e sistema pronto para a Páscoa.</li>
                     </ul>
                 </div>
                 <div>
@@ -445,6 +621,71 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="slide-container">
+        <h2 class="slide-title">E quais são algumas das possibilidades?</h2>
+        <div class="content-area">
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; width: 100%;">
+
+                <!-- Recomendação Diária -->
+                <div style="background-color: #FFFFFF; border: 2px solid #D4AF37; border-radius: 12px; padding: 35px 25px; text-align: left; box-shadow: 0 8px 20px rgba(0,0,0,0.08);">
+                    <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                        <div style="background: linear-gradient(135deg, #D4AF37 0%, #F4D03F 100%); color: #FFF; width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                            <i class="fa-solid fa-star" style="font-size: 24px;"></i>
+                        </div>
+                        <h3 style="margin: 0; font-size: 22px;">Recomendação Diária</h3>
+                    </div>
+                    <ul style="list-style: none; padding: 0; margin: 0; font-size: 16px; line-height: 2;">
+                        <li style="margin-bottom: 8px;"><i class="fa-solid fa-circle" style="color: #D4AF37; font-size: 8px; margin-right: 12px;"></i> Top 10 clientes do dia</li>
+                        <li style="margin-bottom: 8px;"><i class="fa-solid fa-circle" style="color: #D4AF37; font-size: 8px; margin-right: 12px;"></i> Números estimados de venda</li>
+                        <li><i class="fa-solid fa-circle" style="color: #D4AF37; font-size: 8px; margin-right: 12px;"></i> Sugestões de abordagem</li>
+                    </ul>
+                </div>
+
+                <!-- Perfil de Cliente -->
+                <div style="background-color: #FFFFFF; border: 2px solid #D4AF37; border-radius: 12px; padding: 35px 25px; text-align: left; box-shadow: 0 8px 20px rgba(0,0,0,0.08);">
+                    <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                        <div style="background: linear-gradient(135deg, #D4AF37 0%, #F4D03F 100%); color: #FFF; width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                            <i class="fa-solid fa-user-circle" style="font-size: 24px;"></i>
+                        </div>
+                        <h3 style="margin: 0; font-size: 22px;">Perfil de Cliente</h3>
+                    </div>
+                    <ul style="list-style: none; padding: 0; margin: 0; font-size: 16px; line-height: 2;">
+                        <li style="margin-bottom: 8px;"><i class="fa-solid fa-circle" style="color: #D4AF37; font-size: 8px; margin-right: 12px;"></i> Chocolate favorito</li>
+                        <li style="margin-bottom: 8px;"><i class="fa-solid fa-circle" style="color: #D4AF37; font-size: 8px; margin-right: 12px;"></i> Estatísticas e histórico</li>
+                        <li style="margin-bottom: 8px;"><i class="fa-solid fa-circle" style="color: #D4AF37; font-size: 8px; margin-right: 12px;"></i> Ranking e nota de engajamento</li>
+                        <li><i class="fa-solid fa-circle" style="color: #D4AF37; font-size: 8px; margin-right: 12px;"></i> Padrões comportamentais</li>
+                    </ul>
+                </div>
+
+                <!-- Chat Inteligente -->
+                <div style="background-color: #FFFFFF; border: 2px solid #D4AF37; border-radius: 12px; padding: 35px 25px; text-align: left; box-shadow: 0 8px 20px rgba(0,0,0,0.08);">
+                    <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                        <div style="background: linear-gradient(135deg, #D4AF37 0%, #F4D03F 100%); color: #FFF; width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                            <i class="fa-solid fa-comments" style="font-size: 24px;"></i>
+                        </div>
+                        <h3 style="margin: 0; font-size: 22px;">Chat Inteligente</h3>
+                    </div>
+                    <p style="font-size: 15px; margin-bottom: 15px; color: #5D4037; line-height: 1.5;">Um assistente <strong>interno</strong> que ajuda a equipe da Cau com qualquer pergunta sobre o negócio. Exemplos:</p>
+                    <div style="background-color: #FFF8E1; border-left: 3px solid #D4AF37; padding: 12px 15px; margin-bottom: 8px; border-radius: 4px; font-size: 14px; font-style: italic; color: #3E2723;">
+                        "Quanto vendemos na semana do dia 5?"
+                    </div>
+                    <div style="background-color: #FFF8E1; border-left: 3px solid #D4AF37; padding: 12px 15px; margin-bottom: 8px; border-radius: 4px; font-size: 14px; font-style: italic; color: #3E2723;">
+                        "Tem cliente sem resposta no WhatsApp?"
+                    </div>
+                    <div style="background-color: #FFF8E1; border-left: 3px solid #D4AF37; padding: 12px 15px; border-radius: 4px; font-size: 14px; font-style: italic; color: #3E2723;">
+                        "Me ajude a criar um formulário que..."
+                    </div>
+                </div>
+
+            </div>
+
+            <p style="text-align: center; margin-top: 50px; font-size: 18px; color: #5D4037; font-weight: 500;">
+                <i class="fa-solid fa-lightbulb" style="color: #D4AF37; margin-right: 10px;"></i>
+                Estas são apenas algumas ideias do que é possivel!
+            </p>
         </div>
     </div>
 
@@ -500,7 +741,7 @@
                     <div>
                         <h3 style="font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 500; color: #8D6E63; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px;">2. Implementação (Estimativa)</h3>
                         <div style="font-family: 'Playfair Display', serif; font-size: 46px; color: #3E2723; font-weight: 400; line-height: 1;">
-                            <span style="font-size: 20px; vertical-align: top; color: #D4AF37; margin-right: 5px; font-weight: 400;">R$</span>15k <span style="font-family: 'Montserrat', sans-serif; font-size: 18px; color: #8D6E63; margin: 0 10px; font-weight: 300;">a</span> <span style="font-size: 20px; vertical-align: top; color: #D4AF37; margin-right: 5px; font-weight: 400;">R$</span>30k
+                            <span style="font-size: 20px; vertical-align: top; color: #D4AF37; margin-right: 5px; font-weight: 400;">R$</span>20k <span style="font-family: 'Montserrat', sans-serif; font-size: 18px; color: #8D6E63; margin: 0 10px; font-weight: 300;">a</span> <span style="font-size: 20px; vertical-align: top; color: #D4AF37; margin-right: 5px; font-weight: 400;">R$</span>40k
                         </div>
                         <p style="font-size: 12px; color: #8D6E63; margin-top: 15px; font-weight: 300;">Dependendo das funcionalidades acordadas.</p>
                     </div>
