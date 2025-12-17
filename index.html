@@ -272,21 +272,197 @@
         .qa-layout { text-align: center; }
         .qa-layout h2 { font-size: 80px; color: #D4AF37; margin-bottom: 20px; border: none; }
 
+        /* TABLET RESPONSIVENESS */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .slide-container { padding: 60px 40px; }
+            h1 { font-size: 48px; }
+            h2 { font-size: 44px; }
+            h3 { font-size: 24px; }
+            .slide-title { font-size: 44px; }
+        }
+
         /* MOBILE RESPONSIVENESS */
         @media (max-width: 768px) {
-            .slide-container { padding: 60px 20px; min-height: auto; }
-            h1 { font-size: 42px; }
-            h2 { font-size: 36px; }
-            .two-column { grid-template-columns: 1fr; gap: 40px; }
-            .slide-container.bleed-image-layout { grid-template-columns: 1fr; display: flex; flex-direction: column; }
-            .bleed-image-layout .content-container { padding: 60px 20px; min-height: auto; }
-            .bleed-image-layout .image-container { height: 300px; min-height: auto; }
-            .rounded-image-layout .image-wrapper { width: 280px; height: 280px; border-width: 4px; }
-            .tiled-content { flex-direction: column; }
-            .custom-timeline-wrapper { flex-direction: column; align-items: center; gap: 60px; padding-top: 20px; }
-            .custom-timeline-line { width: 2px; height: 100%; left: 50%; top: 0; right: auto; transform: translateX(-50%); }
-            .custom-timeline-card { width: 100%; max-width: 320px; }
-            .logo-container img { height: 100px !important; }
+            /* Base Layout */
+            .slide-container {
+                padding: 40px 20px;
+                min-height: auto;
+            }
+
+            /* Typography */
+            h1 {
+                font-size: 36px !important;
+                line-height: 1.2;
+            }
+            h2 {
+                font-size: 32px;
+                margin-bottom: 20px;
+            }
+            h3 {
+                font-size: 20px;
+                margin-bottom: 12px;
+            }
+            .slide-title {
+                font-size: 32px;
+                padding-bottom: 15px;
+                margin-bottom: 30px;
+            }
+            p, li {
+                font-size: 16px;
+                line-height: 1.5;
+            }
+
+            /* Two Column Layouts */
+            .two-column {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            /* Bleed Image Layout */
+            .slide-container.bleed-image-layout {
+                grid-template-columns: 1fr;
+                display: flex;
+                flex-direction: column;
+            }
+            .bleed-image-layout .content-container {
+                padding: 40px 20px;
+                min-height: auto;
+            }
+            .bleed-image-layout .image-container {
+                height: 250px;
+                min-height: auto;
+                order: -1; /* Image first on mobile */
+            }
+
+            /* Rounded Image Layout */
+            .rounded-image-layout .image-wrapper {
+                width: 220px;
+                height: 220px;
+                border-width: 4px;
+            }
+
+            /* Tiled Content (3 cards features) */
+            .tiled-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .tile {
+                padding: 30px 20px;
+            }
+            .tile .icon {
+                font-size: 36px;
+            }
+
+            /* Timeline */
+            .custom-timeline-wrapper {
+                flex-direction: column;
+                align-items: center;
+                gap: 50px;
+                padding-top: 20px;
+            }
+            .custom-timeline-line {
+                width: 2px;
+                height: 100%;
+                left: 50%;
+                top: 0;
+                right: auto;
+                transform: translateX(-50%);
+            }
+            .custom-timeline-card {
+                width: 100%;
+                max-width: 300px;
+                padding: 40px 15px 25px;
+            }
+            .custom-timeline-badge {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+
+            /* Logos */
+            .logo-container img {
+                height: 80px !important;
+            }
+
+            /* Download Button */
+            .download-btn {
+                padding: 15px 35px;
+                font-size: 16px;
+                margin-top: 30px;
+            }
+            .download-btn i {
+                font-size: 20px;
+            }
+
+            /* Investment Section - New Slide with 3 possibilities cards */
+            .slide-container .content-area > div[style*="grid-template-columns: repeat(3, 1fr)"] {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+            }
+
+            /* Investment Section - 2 column layout */
+            .slide-container .content-area > div[style*="grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+                gap: 30px !important;
+            }
+
+            /* Image Wrapper */
+            .image-wrapper {
+                height: 250px;
+            }
+
+            /* QA Layout */
+            .qa-layout h2 {
+                font-size: 48px !important;
+            }
+        }
+
+        /* SMALL MOBILE (< 480px) */
+        @media (max-width: 480px) {
+            .slide-container {
+                padding: 30px 15px;
+            }
+
+            h1 {
+                font-size: 28px !important;
+            }
+            h2 {
+                font-size: 26px;
+            }
+            h3 {
+                font-size: 18px;
+            }
+
+            .slide-title {
+                font-size: 26px;
+            }
+
+            p, li {
+                font-size: 15px;
+            }
+
+            .logo-container img {
+                height: 60px !important;
+            }
+
+            .rounded-image-layout .image-wrapper {
+                width: 180px;
+                height: 180px;
+            }
+
+            .download-btn {
+                padding: 12px 25px;
+                font-size: 14px;
+            }
+
+            .custom-timeline-card {
+                max-width: 260px;
+                padding: 35px 12px 20px;
+            }
+
+            .qa-layout h2 {
+                font-size: 36px !important;
+            }
         }
     </style>
 </head>
