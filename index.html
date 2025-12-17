@@ -465,8 +465,155 @@
             }
         }
     </style>
+    <style>
+        /* PIN LOCK SCREEN */
+        #pin-lock-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #3E2723 0%, #5D4037 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        #pin-lock-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .pin-lock-container {
+            background: #FFF;
+            padding: 50px 40px;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .pin-lock-logo {
+            margin-bottom: 30px;
+        }
+
+        .pin-lock-logo i {
+            font-size: 64px;
+            color: #D4AF37;
+        }
+
+        .pin-lock-container h2 {
+            font-family: 'Playfair Display', serif;
+            color: #3E2723;
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .pin-lock-container p {
+            color: #5D4037;
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        #pin-input {
+            width: 100%;
+            padding: 18px 20px;
+            font-size: 24px;
+            text-align: center;
+            border: 2px solid #EFEBE9;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 8px;
+            transition: border-color 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        #pin-input:focus {
+            outline: none;
+            border-color: #D4AF37;
+        }
+
+        #pin-input.error {
+            border-color: #d32f2f;
+            animation: shake 0.5s;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+            20%, 40%, 60%, 80% { transform: translateX(10px); }
+        }
+
+        #pin-submit {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #D4AF37 0%, #F4D03F 100%);
+            color: #FFF;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        #pin-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        #pin-submit:active {
+            transform: translateY(0);
+        }
+
+        .pin-error-message {
+            color: #d32f2f;
+            font-size: 14px;
+            margin-top: 15px;
+            font-weight: 500;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .pin-error-message.show {
+            opacity: 1;
+        }
+
+        @media (max-width: 480px) {
+            .pin-lock-container {
+                padding: 40px 30px;
+            }
+            .pin-lock-container h2 {
+                font-size: 26px;
+            }
+            #pin-input {
+                font-size: 20px;
+                padding: 15px;
+            }
+        }
+    </style>
 </head>
 <body>
+
+<!-- PIN LOCK OVERLAY -->
+<div id="pin-lock-overlay">
+    <div class="pin-lock-container">
+        <div class="pin-lock-logo">
+            <i class="fa-solid fa-lock"></i>
+        </div>
+        <h2>Acesso Restrito</h2>
+        <p>Por favor, insira o PIN para acessar a apresentação</p>
+        <input type="password" id="pin-input" maxlength="4" placeholder="••••" inputmode="numeric" pattern="[0-9]*">
+        <button id="pin-submit">Acessar</button>
+        <div class="pin-error-message" id="pin-error">PIN incorreto. Tente novamente.</div>
+    </div>
+</div>
 
 <div class="presentation-wrapper">
     <div class="slide-container">
@@ -777,25 +924,94 @@
 </div>
 
 <script>
-    // Scroll Animation Observer
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.15
-    };
+    // PIN LOCK FUNCTIONALITY
+    const CORRECT_PIN = '2888';
+    const PIN_STORAGE_KEY = 'cau_presentation_unlocked';
 
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, observerOptions);
+    const pinOverlay = document.getElementById('pin-lock-overlay');
+    const pinInput = document.getElementById('pin-input');
+    const pinSubmit = document.getElementById('pin-submit');
+    const pinError = document.getElementById('pin-error');
+    const presentationWrapper = document.querySelector('.presentation-wrapper');
 
-    document.querySelectorAll('.slide-container').forEach((slide, index) => {
-        observer.observe(slide);
-        if (index === 0) slide.classList.add('visible');
+    // Check if already unlocked in this session
+    function checkUnlocked() {
+        return sessionStorage.getItem(PIN_STORAGE_KEY) === 'true';
+    }
+
+    // Unlock presentation
+    function unlockPresentation() {
+        sessionStorage.setItem(PIN_STORAGE_KEY, 'true');
+        pinOverlay.classList.add('hidden');
+        // Initialize scroll animations after unlock
+        setTimeout(initScrollAnimations, 500);
+    }
+
+    // Verify PIN
+    function verifyPin() {
+        const enteredPin = pinInput.value;
+
+        if (enteredPin === CORRECT_PIN) {
+            pinError.classList.remove('show');
+            pinInput.classList.remove('error');
+            unlockPresentation();
+        } else {
+            // Show error
+            pinInput.classList.add('error');
+            pinError.classList.add('show');
+            pinInput.value = '';
+
+            // Remove error styling after animation
+            setTimeout(() => {
+                pinInput.classList.remove('error');
+            }, 500);
+        }
+    }
+
+    // Event Listeners
+    pinSubmit.addEventListener('click', verifyPin);
+
+    pinInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            verifyPin();
+        }
     });
+
+    // Only allow numbers in PIN input
+    pinInput.addEventListener('input', (e) => {
+        e.target.value = e.target.value.replace(/[^0-9]/g, '');
+    });
+
+    // Auto-focus input
+    pinInput.focus();
+
+    // Check if already unlocked
+    if (checkUnlocked()) {
+        pinOverlay.classList.add('hidden');
+        initScrollAnimations();
+    }
+
+    // Scroll Animation Observer
+    function initScrollAnimations() {
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.slide-container').forEach((slide, index) => {
+            observer.observe(slide);
+            if (index === 0) slide.classList.add('visible');
+        });
+    }
 </script>
 
 </body>
