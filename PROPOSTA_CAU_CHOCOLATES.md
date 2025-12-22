@@ -1,6 +1,6 @@
 # PROPOSTA COMERCIAL
 
-## Consultoria Estratégica em Inteligência Artificial
+## Plataforma de Gestão Comercial e CRM
 
 ---
 
@@ -8,7 +8,7 @@
 **A/C:** Renata Feffer
 
 **De:** VRay Consultoria
-**Data:** 17 de Dezembro de 2025
+**Data:** 22 de Dezembro de 2024
 
 ---
 
@@ -41,113 +41,131 @@ No entanto, a Cau Chocolates identifica um **gargalo crítico**: esses dados nã
 - O que cada cliente gosta? Quais são suas preferências?
 - Quando é o momento ideal para reengajar um cliente?
 
+**Gestão descentralizada e ineficiente:**
+- Múltiplas contas de WhatsApp sem visibilidade centralizada
+- Impossibilidade de rastrear conversas e pedidos de forma organizada
+- Falta de métricas e dashboards para acompanhar desempenho
+- Dados e perfil de clientes inacessiveis durante atendimento
+
 **Consequências operacionais:**
 - Oportunidades de venda perdidas por falta de *follow-up* estruturado
 - Impossibilidade de personalizar o atendimento em escala
 - Dados históricos valiosos sendo subutilizados
 - Margem de lucro potencial não sendo alcançada
 
-**O Objetivo:** Aplicar técnicas avançadas de Machine Learning e Ciência de Dados para otimizar o atendimento e relacionamento com clientes da Cau. Por meio de modelos preditivos, segmentação comportamental e análise de padrões históricos, transformaremos dados brutos em insights data-driven e sistemas de recomendação inteligentes. Nossa proposta visa eliminar esse gargalo operacional através de soluções de IA sob medida, capturando oportunidades de lucro previamente subaproveitadas.
+---
+
+## 3. NOSSA SOLUÇÃO: PLATAFORMA CAU CHOCOLATES
+
+Desenvolvemos uma **plataforma completa de gestão de clientes e CRM** exclusivamente feita para a Cau Chocolates. Esta é uma solução pronta, com funcionalidades predefinidas que atendem todas as necessidades identificadas.
+
+### O que é a Plataforma?
+
+Esta é uma **plataforma de gestão de clientes e CRM** desenvolvida especificamente para a **Cau Chocolates**. É um painel administrativo completo para gerenciar vendas, clientes e comunicação, com inteligência artificial integrada para otimizar o atendimento.
+
+### Módulos da Plataforma
+
+| Módulo | Funcionalidades Principais |
+|--------|---------------------------|
+| **📊 Painel (Dashboard)** | Visão geral com métricas de vendas, pedidos, novos clientes e ticket médio. Gráficos de desempenho diário e produtos mais vendidos. |
+| **💬 Conversas** | Gestão centralizada de atendimento ao cliente via WhatsApp com múltiplas contas. Filtros por vendedor, busca de conversas, indicadores de mensagens não lidas. |
+| **👥 Clientes** | CRM completo com perfil detalhado de cada cliente: histórico de compras, produtos favoritos, último contato, total de pedidos, valor total gasto, status (VIP/Novo/Inativo). |
+| **🛒 Vendas** | Acompanhamento completo de pedidos e transações com status (Entregue/Em Trânsito/Preparando/Confirmado), valor, data, vendedor responsável. |
+| **🍫 Produtos** | Catálogo completo de produtos (trufas, barras, bombons, kits) com controle de estoque, preços, categorias, número de vendas. Alertas de estoque baixo. |
+| **📈 Relatórios** | Análises de desempenho de vendas, distribuição de mensagens por hora, tendências de pedidos, receita total, produtos em alta. Exportação de dados. |
+
+### Detalhes do Cliente (Modal Inteligente)
+
+Ao clicar em qualquer cliente, a plataforma exibe:
+- **Informações básicas:** Nome, email, telefone, data de cadastro, status VIP
+- **Métricas de engajamento:** Taxa de resposta, taxa de conversão, satisfação
+- **Atividade recente:** Último pedido, frequência de compra, pedidos este mês, gasto mensal
+- **Últimos pedidos:** Lista completa com valores e status
+
+### Como isso resolve os desafios da Cau?
+
+| Desafio Atual | Solução da Plataforma |
+|---------------|----------------------|
+| Clientes sem follow-up | Filtros de "último contato" e status (Inativo) para identificar quem precisa de reengajamento |
+| Falta de priorização | Sistema de classificação VIP baseado em histórico de compras e ticket médio |
+| Desconhecimento de preferências | Perfil de cliente mostra produtos favoritos e padrões de compra |
+| WhatsApp descentralizado | Central de conversas unificada com visibilidade de todos os vendedores |
+| Sem métricas | Dashboard completo com KPIs em tempo real |
+| Gestão manual de produtos | Catálogo digital com controle de estoque e alertas automáticos |
 
 ---
 
-## 3. NOSSA PROPOSTA: CONSULTORIA EXPRESS EM INTELIGÊNCIA ARTIFICIAL
+## 4. CRONOGRAMA DE DESENVOLVIMENTO
 
-Considerando que a Cau Chocolates já identificou claramente a dor operacional relacionada à subutilização de dados históricos e à ausência de inteligência aplicada ao relacionamento com clientes, propomos uma **consultoria express** com escopo delimitado e cronograma otimizado.
+O desenvolvimento será estruturado para garantir entrega **duas semanas antes da Páscoa** (06 de Abril de 2025), permitindo testes completos e preparação da equipe antes do período de maior demanda.
 
-Ao contrário de uma consultoria tradicional de longo prazo, estruturamos o projeto em **2 etapas ágeis** para assegurar a entrega de soluções operacionais **antes da Páscoa de 2026**, período que concentra o grande volume de vendas do segmento de chocolates, maximizando assim o retorno sobre o investimento.
+### Fases de Desenvolvimento
 
-### Etapas e prazos
+| Fase | Período | Entregas |
+|------|---------|----------|
+| **Fase 1: Setup e Arquitetura** | 05/01/2025 - 28/01/2025 | Configuração da infraestrutura, banco de dados, autenticação e estrutura base da plataforma. |
+| **Fase 2: Desenvolvimento Core** | 29/01/2025 - 15/03/2025 | Implementação dos módulos principais: Dashboard, Clientes, Conversas, Vendas e Produtos. Integração com WhatsApp. |
+| **Fase 3: Ajustes e Capacitação** | 15/03/2025 - 22/03/2025 | Testes completos, deploy em produção, migração de dados, treinamento da equipe. |
+| **Fase 4: Acompanhamento Pós-entrega** | 23/03/2025 - 05/05/2025 | Análise de resultados da Páscoa, documentação de métricas de sucesso e garantia de performance. |
 
-| Etapa | Prazo | Objetivo Principal |
-|------|-------|----------|
-| 1. Diagnóstico e Estudo | 28/01/2026 | Análise de dados e definição de soluções de IA. |
-| 2. Implementação | 05/04/2026 | Desenvolvimento e implantação das soluções de ML. |
-
----
-
-### ETAPA 1: DIAGNÓSTICO E ESTUDO (05/01/2026 - 28/01/2026)
-
-Nesta etapa, analisaremos em detalhe **como a Cau opera hoje** — dados disponíveis, processos de atendimento, fluxos de informação e sistemas existentes — com o objetivo de **definir exatamente o que será desenvolvido na plataforma de inteligência da Cau**.
-
-O trabalho inclui o estudo das **integrações necessárias**, ideação das funcionalidades, avaliação de **viabilidade técnica**, bem como análise de **esforço vs. impacto** de cada solução proposta. Sempre garantindo alinhamento contínuo entre as equipes, garantindo foco nas soluções de maior impacto para o negócio e evitando desperdício de tempo e recursos.
-
-#### Entrega
-
-Ao final da etapa, entregaremos um **documento completo de definição da solução**, contendo:
-
-* Descrição detalhada da plataforma de IA a ser desenvolvida
-* Funcionalidades e soluções customizadas para a Cau
-* Tipos de modelos de Machine Learning a serem utilizados
-* Arquitetura e integrações previstas
-* Plano de implementação
-* Timeline detalhada
-* Custos individualizados por solução
-
-Este documento servirá como base técnica e estratégica para a implementação da plataforma na Etapa 2. Ao final dessa entrega, a Cau Chocolates deverá avaliar e aprovar as soluções desejadas, bem como autorizar formalmente o início da fase de implementação, definindo a plataforma final a ser desenvolvida.
-
----
-
-### ETAPA 2: IMPLEMENTAÇÃO E GO-LIVE (29/01/2026 – 05/04/2026)
-
-Desenvolvimento e implantação da **plataforma de inteligência da Cau Chocolates**, contendo exclusivamente as soluções de Machine Learning aprovadas na Etapa 1.
-
-#### Fases de Execução
-
-* **Fase 2.1 – Arquitetura, Engenharia de Dados e Modelagem (até 15/02/2026)**
-  Definição da arquitetura técnica, construção de pipelines de dados, desenvolvimento, treinamento e validação inicial dos modelos de Machine Learning, além das integrações com as bases de dados existentes.
-
-* **Fase 2.2 – Plataforma, Dashboards e Integrações (até 15/03/2026)**
-  Desenvolvimento do frontend web da plataforma, criação de dashboards operacionais, APIs e integrações com os sistemas da Cau, garantindo uso simples e fluido das soluções de IA.
-
-* **Fase 2.3 – Testes, Ajustes e Capacitação (até 20/03/2026)**
-  Testes funcionais e de usabilidade, ajustes finais dos modelos e treinamento da equipe da Cau para utilização da plataforma no dia a dia.
-
-* **Fase 2.4 – Go-Live e Acompanhamento Inicial (até 05/04/2026)**
-  Implantação em ambiente de produção e início do período de acompanhamento assistido para garantir estabilidade e adoção das soluções.
-
-#### Entrega
-
-* Plataforma web de inteligência da Cau em produção
-* Modelos de Machine Learning operacionais e integrados
-* Dashboards e ferramentas de IA prontas para uso
-* Equipe capacitada para utilização da plataforma
-
-Todas as soluções de Inteligência Artificial serão entregues por meio de uma **plataforma própria**, desenvolvida sob medida pela VRay para a Cau Chocolates. A plataforma reunirá, em um único ambiente, todas as ferramentas e funcionalidades aprovadas na Etapa 1, sendo desenhada para uso operacional contínuo, facilitando a adoção pela equipe e centralizando a inteligência gerada a partir dos dados.
-
----
-
-## 4. INVESTIMENTO
-
-O investimento é estruturado de forma **flexível e transparente**, garantindo que a Cau Chocolates pague apenas pelo que fizer sentido para o negócio.
-
-| Etapa | Investimento | Descrição | Condições de Pagamento |
-|-------|--------------|-----------|------------------------|
-| **Diagnóstico e Estudo** | **R$ 5.000,00** | Imersão operacional, análise de dados e definição detalhada da plataforma de IA e suas soluções. Gera plano claro e acionável. | À vista no início dos trabalhos |
-| **Implementação da Plataforma** | **R$ 20.000,00 - R$ 40.000,00** | Definido após o Diagnóstico, de acordo com a complexidade da plataforma e as soluções de IA aprovadas pela Cau. | 50% no início do desenvolvimento<br>50% na entrega final |
+**Plataforma 100% operacional duas semanas antes da Páscoa** (06/04/2025), garantindo que a equipe da Cau tenha tempo suficiente para se familiarizar com o sistema e utilizá-lo com confiança durante o período de maior movimento. Após a Páscoa, acompanhamento dedicado para documentar resultados e garantir o sucesso completo da implementação. Entregamos este documento para vocês um mês após a entrega final do projeto.
 
 
 ---
 
-## 5. Por que a VRay?
+## 5. INVESTIMENTO
+
+O investimento total para o desenvolvimento completo da plataforma é de **R$ 35.000,00**, estruturado da seguinte forma:
+
+### Estrutura de Pagamento
+
+| Parcela | Valor | Momento do Pagamento |
+|---------|-------|---------------------|
+| **Entrada** | **R$ 5.000,00** | No fechamento do contrato (até 02/01/2025) |
+| **Parcela 1** | **R$ 10.000,00** | Final do mês 1 (31/01/2025) |
+| **Parcela 2** | **R$ 10.000,00** | Final do mês 2 (28/02/2025) |
+| **Parcela 3** | **R$ 10.000,00** | Final do mês 3 (31/03/2025) |
+| **TOTAL** | **R$ 35.000,00** | - |
+
+### O que está incluído no investimento:
+
+- Desenvolvimento completo da plataforma com todos os módulos descritos
+- Integração com WhatsApp para gestão de conversas
+- Sistema de CRM completo com perfis de clientes
+- Dashboards e relatórios analíticos
+- Sistema de gestão de vendas e pedidos
+- Deploy em servidor em nuvem
+- Migração de dados históricos
+- Treinamento completo da equipe
+- 5 meses de suporte pós-entrega inclusos
+
+### Investimentos Futuros (Opcionais)
+
+Após a entrega da plataforma, a Cau Chocolates poderá optar por:
+- **Novas funcionalidades:** Sob orçamento customizado
+- **Integrações adicionais:** Sob orçamento customizado
+
+---
+
+## 6. POR QUE A VRAY?
 
 - **Agilidade com Qualidade:** Entendemos a urgência da sazonalidade. Montamos um cronograma *fast-track* para entregar valor antes da Páscoa.
-- **Solução Sob Medida:** Não vendemos "caixinha pronta". Analisamos os dados da Cau para criar uma automação que fale a língua da marca.
+- **Solução Sob Medida:** Desenvolvemos uma plataforma específica para o modelo de negócio da Cau, não uma ferramenta genérica.
 - **Parceria Técnica:** Somos engenheiros focados em resolver problemas de negócio. Cuidamos da complexidade técnica para que vocês foquem no chocolate.
 
 ---
 
-
-## 6. PRÓXIMOS PASSOS
+## 7. PRÓXIMOS PASSOS
 
 1. Aprovação desta proposta pela Cau Chocolates
-2. Assinatura do termo de início do Diagnóstico
-3. Kick-off até **02 de Janeiro de 2026**
-4. Início dos trabalhos em **05 de Janeiro de 2026**
+2. Assinatura do contrato e pagamento da entrada (R$ 5.000,00)
+3. Kick-off do projeto até **02 de Janeiro de 2025**
+4. Início do desenvolvimento em **06 de Janeiro de 2025**
+5. Entrega final e go-live em **06 de Abril de 2025**
 
 ---
 
-## 7. DISPOSIÇÕES GERAIS
+## 8. DISPOSIÇÕES GERAIS
 
 ### 1. Independência das Partes
 
@@ -167,71 +185,87 @@ O investimento é estruturado de forma **flexível e transparente**, garantindo 
 
 3.1. As Partes declaram estar cientes e de pleno acordo com as obrigações previstas na Lei Geral de Proteção de Dados – LGPD (Lei nº 13.709/2018), comprometendo-se a tratar quaisquer dados pessoais apenas conforme estritamente necessário para a execução dos serviços.
 
-3.2. Caberá a cada Parte adotar medidas técnicas e administrativas adequadas para proteger dados pessoais utilizados na implementação ou análise dos modelos de IA, especialmente quando relacionados a comportamento de consumo, histórico de compras, perfis de clientes e segmentação de mercado.
+3.2. Caberá a cada Parte adotar medidas técnicas e administrativas adequadas para proteger dados pessoais utilizados na plataforma, especialmente dados de clientes, histórico de compras, perfis de consumo e informações comerciais.
 
 3.3. A Prestadora não será responsável por dados fornecidos incorretamente ou sem base legal pela Contratante.
 
 ### 4. Propriedade Intelectual
 
-4.1. Todos os relatórios, análises, recomendações, dashboards, modelos estatísticos, scripts, códigos, bases de conhecimento, arquiteturas, templates e demais produtos intelectuais desenvolvidos pela Prestadora no âmbito deste Contrato constituem direitos autorais e propriedade intelectual da Prestadora, salvo ajustes específicos previstos no Contrato.
+4.1. O código-fonte, arquitetura, design e propriedade intelectual da plataforma permanecem como propriedade da Prestadora.
 
-4.2. A Contratante terá uma licença não exclusiva, não transferível e limitada ao uso interno dos materiais elaborados, exclusivamente para fins de suporte às operações de vendas ao varejo.
+4.2. A Contratante terá uma licença perpétua, não exclusiva e não transferível para uso da plataforma desenvolvida, exclusivamente para fins de operação do seu negócio.
 
-4.3. Fica vedada a cessão, sublicenciamento, venda, reprodução externa ou disponibilização a terceiros sem prévia autorização por escrito da Prestadora.
+4.3. Fica vedada a revenda, sublicenciamento, reprodução ou disponibilização da plataforma a terceiros sem prévia autorização por escrito da Prestadora.
 
-### 5. Não Captação de Profissionais (Non-Solicitation)
+### 5. Garantia e Suporte
 
-5.1. Durante a vigência deste Contrato e pelo período de 12 (doze) meses após seu término, nenhuma das Partes poderá contratar, aliciar, empregar ou tentar empregar colaboradores, consultores, parceiros ou prestadores vinculados à outra Parte, salvo mediante autorização prévia e expressa.
+5.1. A Prestadora garante o funcionamento adequado da plataforma conforme especificações acordadas por 30 (trinta) dias após a entrega final.
 
-5.2. A infração desta cláusula sujeitará a Parte responsável ao pagamento de multa equivalente a 3 (três) vezes a remuneração mensal do profissional envolvido.
+5.2. Bugs críticos que impeçam o funcionamento básico da plataforma serão corrigidos sem custo adicional durante o período de garantia.
 
-### 6. Responsabilidade
+5.3. Após o período de garantia, suporte e manutenção serão oferecidos mediante contratação de plano de suporte mensal.
 
-6.1. A Prestadora responderá exclusivamente por danos diretos decorrentes de dolo ou culpa comprovada na execução dos serviços, limitados ao valor total contratado.
+### 6. Não Captação de Profissionais (Non-Solicitation)
 
-6.2. A Prestadora não será responsável por:
+6.1. Durante a vigência deste Contrato e pelo período de 12 (doze) meses após seu término, nenhuma das Partes poderá contratar, aliciar, empregar ou tentar empregar colaboradores, consultores, parceiros ou prestadores vinculados à outra Parte, salvo mediante autorização prévia e expressa.
+
+6.2. A infração desta cláusula sujeitará a Parte responsável ao pagamento de multa equivalente a 3 (três) vezes a remuneração mensal do profissional envolvido.
+
+### 7. Responsabilidade
+
+7.1. A Prestadora responderá exclusivamente por danos diretos decorrentes de dolo ou culpa comprovada na execução dos serviços, limitados ao valor total contratado.
+
+7.2. A Prestadora não será responsável por:
 
 (a) perda de lucro, receita, clientela, fundo de comércio ou expectativas de ganho;
 
-(b) decisões comerciais tomadas pela Contratante com base nas recomendações, análises ou previsões produzidas pela consultoria;
+(b) decisões comerciais tomadas pela Contratante com base nos dados e relatórios da plataforma;
 
-(c) resultados específicos vinculados ao desempenho das operações de varejo, aumento de vendas, conversão ou metas comerciais.
+(c) resultados específicos vinculados ao desempenho das operações de varejo, aumento de vendas, conversão ou metas comerciais;
 
-6.3. A Contratante é responsável pela veracidade e integridade das informações fornecidas à Prestadora.
+(d) falhas decorrentes de infraestrutura de terceiros (servidores, internet, WhatsApp, etc.).
 
-### 7. Cessão e Transferência
+7.3. A Contratante é responsável pela veracidade e integridade das informações fornecidas à Prestadora.
 
-7.1. Este Contrato não poderá ser cedido, total ou parcialmente, por qualquer das Partes, sem a prévia autorização por escrito da outra Parte.
+### 8. Alterações de Escopo
 
-7.2. Exclui-se dessa vedação a cessão decorrente de reorganização societária, fusão, incorporação ou venda de ativos, desde que não implique prejuízo à execução dos serviços.
+8.1. O escopo definido nesta proposta contempla todos os módulos e funcionalidades descritos na seção 3.
 
-### 8. Alterações Contratuais
+8.2. Qualquer funcionalidade, integração ou ajuste não previsto no escopo será tratado como demanda adicional, sujeita a nova estimativa de prazo e investimento, mediante aprovação prévia da Contratante.
 
-8.1. Qualquer alteração ou aditivo a este Contrato somente produzirá efeitos se formalizado por escrito e assinado por ambas as Partes.
+8.3. Solicitações de alteração de escopo durante o desenvolvimento podem impactar o cronograma de entrega.
 
-8.2. A tolerância de qualquer das Partes quanto ao descumprimento de obrigações não implicará renúncia, novação ou alteração tácita do presente Contrato.
+### 9. Cessão e Transferência
 
-8.3 Qualquer funcionalidade, integração ou ajuste não previsto no escopo aprovado ao final da Etapa 1 será tratado como demanda adicional, sujeita a nova estimativa de prazo e investimento, mediante aprovação prévia da Contratante.
+9.1. Este Contrato não poderá ser cedido, total ou parcialmente, por qualquer das Partes, sem a prévia autorização por escrito da outra Parte.
 
-### 9. Vigência e Término
+9.2. Exclui-se dessa vedação a cessão decorrente de reorganização societária, fusão, incorporação ou venda de ativos, desde que não implique prejuízo à execução dos serviços.
 
-9.1. Este Contrato entra em vigor na data de sua assinatura e permanecerá válido pelo prazo indicado no preâmbulo, podendo ser renovado mediante acordo mútuo.
+### 10. Vigência e Término
 
-9.2. A rescisão imotivada deverá ser comunicada por escrito com antecedência mínima de 30 (trinta) dias, sem prejuízo do pagamento pelos serviços já prestados.
+10.1. Este Contrato entra em vigor na data de sua assinatura e permanecerá válido até a entrega final da plataforma e conclusão do período de garantia (06/05/2025).
 
-9.3. A rescisão por descumprimento contratual poderá ocorrer a qualquer tempo, mediante notificação formal e após prazo razoável para saneamento.
+10.2. A rescisão imotivada antes da entrega final deverá ser comunicada por escrito com antecedência mínima de 30 (trinta) dias, sem prejuízo do pagamento pelos serviços já prestados e parcelas vencidas.
 
-### 10. Registro, Comunicações e Notificações
+10.3. Em caso de rescisão antes da conclusão, a Contratante terá direito a receber todos os desenvolvimentos realizados até a data da rescisão, proporcionalmente ao valor já pago.
 
-10.1. Todas as notificações, comunicações e solicitações deverão ser realizadas por escrito, por e-mail corporativo ou outro meio eletrônico previamente aceito pelas Partes.
+### 11. Alterações Contratuais
 
-10.2. As Partes concordam que assinaturas eletrônicas e documentos digitais possuem a mesma validade jurídica que assinaturas manuscritas, nos termos da legislação aplicável.
+11.1. Qualquer alteração ou aditivo a este Contrato somente produzirá efeitos se formalizado por escrito e assinado por ambas as Partes.
 
-### 11. Foro e Lei Aplicável
+11.2. A tolerância de qualquer das Partes quanto ao descumprimento de obrigações não implicará renúncia, novação ou alteração tácita do presente Contrato.
 
-11.1. O presente Contrato será regido pelas leis da República Federativa do Brasil.
+### 12. Registro, Comunicações e Notificações
 
-11.2. Fica eleito o foro da comarca da sede da Contratante, com renúncia a qualquer outro, por mais privilegiado que seja.
+12.1. Todas as notificações, comunicações e solicitações deverão ser realizadas por escrito, por e-mail corporativo ou outro meio eletrônico previamente aceito pelas Partes.
+
+12.2. As Partes concordam que assinaturas eletrônicas e documentos digitais possuem a mesma validade jurídica que assinaturas manuscritas, nos termos da legislação aplicável.
+
+### 13. Foro e Lei Aplicável
+
+13.1. O presente Contrato será regido pelas leis da República Federativa do Brasil.
+
+13.2. Fica eleito o foro da comarca da sede da Contratante, com renúncia a qualquer outro, por mais privilegiado que seja.
 
 ---
 
